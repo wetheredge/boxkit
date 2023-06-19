@@ -1,3 +1,12 @@
+FROM docker.io/library/rust:slim as helix
+
+RUN apt update -y && apt install -y git build-essential
+RUN git clone https://github.com/wetheredge/helix && \
+    cd helix && \
+    rm rust-toolchain.toml && \
+    cargo build --release
+
+
 FROM registry.fedoraproject.org/fedora-toolbox:latest
 
 LABEL com.github.containers.toolbox="true" \
@@ -10,10 +19,12 @@ RUN dnf upgrade -y && \
     grep -v '^#' /extra-packages | xargs dnf install -y
 RUN rm /extra-packages
 
+COPY --from=helix /helix/target/release/hx /usr/bin/hx
+COPY --from=helix /helix/runtime /usr/share/helix/runtime
+
 RUN ln -fs /bin/sh /usr/bin/sh && \
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker && \
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/podman && \
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree && \
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/transactional-update
-     
