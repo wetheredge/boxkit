@@ -1,31 +1,19 @@
-age
-atuin
+# age
+# atuin
 btop
 bat
-chezmoi
-clipboard
-cosign
-dbus-x11
-direnv
+# chezmoi
+# cosign
 exa
-ffmpeg
-fzf
-github-cli
-helix
+fish
+gh
+# helix
 just
 make
 micro
 ncdu
-ncurses
-neofetch
-neovim
-npm
-plocate
-python3
 ripgrep
 speedtest-cli
-starship
-vimdiff
+# starship
 wl-clipboard
-zellij
 zstd
