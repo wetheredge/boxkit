@@ -21,6 +21,8 @@ RUN rm /extra-packages
 
 COPY --from=helix /helix/target/release/hx /usr/bin/hx
 COPY --from=helix /helix/runtime /usr/share/helix/runtime
+RUN echo 'export HELIX_RUNTIME="/usr/share/helix/runtime"' >> /etc/profile.d/helix-runtime.sh && \
+    echo 'set -gx HELIX_RUNTIME /usr/share/helix/runtime' >> /usr/share/fish/vendor_conf.d/helix-runtime.fish
 
 RUN ln -fs /bin/sh /usr/bin/sh && \
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker && \
