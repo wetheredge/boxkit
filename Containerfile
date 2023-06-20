@@ -24,6 +24,12 @@ RUN chmod +x /usr/bin/hx && \
     echo 'export HELIX_RUNTIME="/usr/share/helix/runtime"' >> /etc/profile.d/helix-runtime.sh && \
     echo 'set -gx HELIX_RUNTIME /usr/share/helix/runtime' >> /usr/share/fish/vendor_conf.d/helix-runtime.fish
 
+RUN curl --proto '=https' --tlsv1.2 -sSfL https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz \
+    | tar -xJ && \
+    rm -rf ffmpeg-master-latest-*/doc && \
+    mkdir /usr/share/yt-dlp && \
+    mv ffmpeg-master-latest-*/ /usr/share/yt-dlp/ffmpeg
+
 RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker && \
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/podman && \
