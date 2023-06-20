@@ -1,12 +1,3 @@
-FROM docker.io/library/rust:slim as helix
-
-RUN apt update -y && apt install -y git build-essential
-RUN git clone https://github.com/wetheredge/helix && \
-    cd helix && \
-    rm rust-toolchain.toml && \
-    cargo build --release
-
-
 FROM registry.fedoraproject.org/fedora-toolbox:latest
 
 LABEL com.github.containers.toolbox="true" \
@@ -19,9 +10,10 @@ RUN dnf upgrade -y && \
     grep -v '^#' /extra-packages | xargs dnf install -y
 RUN rm /extra-packages
 
-COPY --from=helix /helix/target/release/hx /usr/bin/hx
-COPY --from=helix /helix/runtime /usr/share/helix/runtime
-RUN echo 'export HELIX_RUNTIME="/usr/share/helix/runtime"' >> /etc/profile.d/helix-runtime.sh && \
+COPY helix/hx /usr/bin/hx
+COPY helix/runtime /usr/share/helix/runtime
+RUN chmod +x /usr/bin/hx && \
+    echo 'export HELIX_RUNTIME="/usr/share/helix/runtime"' >> /etc/profile.d/helix-runtime.sh && \
     echo 'set -gx HELIX_RUNTIME /usr/share/helix/runtime' >> /usr/share/fish/vendor_conf.d/helix-runtime.fish
 
 RUN ln -fs /bin/sh /usr/bin/sh && \
