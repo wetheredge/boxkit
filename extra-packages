@@ -7,7 +7,6 @@ bat
 exa
 fish
 gh
-# helix
 just
 make
 micro
@@ -17,3 +16,6 @@ speedtest-cli
 # starship
 wl-clipboard
 zstd
+
+foot-terminfo
+kitty-terminfo
