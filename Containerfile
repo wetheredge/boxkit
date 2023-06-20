@@ -5,10 +5,14 @@ LABEL com.github.containers.toolbox="true" \
       summary="A cloud-native terminal experience" \
       maintainer="me@wetheredge.com"
 
+COPY coprs /
+RUN for copr in $(grep -v '^#' /coprs); do dnf copr enable -y $copr; done && \
+    rm /coprs
+
 COPY extra-packages /
 RUN dnf upgrade -y && \
-    grep -v '^#' /extra-packages | xargs dnf install -y
-RUN rm /extra-packages
+    grep -v '^#' /extra-packages | xargs dnf install -y && \
+    rm /extra-packages
 
 COPY npm-packages /
 RUN grep -v '^#' /npm-packages | xargs npm install --global && \

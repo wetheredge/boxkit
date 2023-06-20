@@ -10,6 +10,7 @@ gcc
 gh
 git-absorb
 git-delta
+gping
 just
 make
 micro
@@ -18,7 +19,7 @@ nodejs
 nodejs-npm
 ripgrep
 speedtest-cli
-# starship
+starship
 wl-clipboard
 zstd
 
