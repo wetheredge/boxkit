@@ -10,6 +10,10 @@ RUN dnf upgrade -y && \
     grep -v '^#' /extra-packages | xargs dnf install -y
 RUN rm /extra-packages
 
+COPY npm-packages /
+RUN grep -v '^#' /npm-packages | xargs npm install --global && \
+    rm /npm-packages
+
 COPY helix/hx /usr/bin/hx
 COPY helix/runtime /usr/share/helix/runtime
 RUN chmod +x /usr/bin/hx && \
