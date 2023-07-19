@@ -1,25 +1,29 @@
 # age
 # atuin
-btop
 bat
+btop
 # chezmoi
 # cosign
 exa
+fd-find
 fish
 gcc
 gh
 git-absorb
 git-delta
 gping
+jq
 just
 make
 micro
+mosh
 ncdu
 nodejs
 nodejs-npm
 ripgrep
 speedtest-cli
 starship
+tokei
 wl-clipboard
 yt-dlp
 zstd
