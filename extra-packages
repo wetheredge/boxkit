@@ -2,12 +2,13 @@
 # atuin
 bat
 btop
-# chezmoi
+clang-tools-extra
 # cosign
 exa
 fd-find
 fish
 gcc
+gcc-c++
 gh
 git-absorb
 git-delta
