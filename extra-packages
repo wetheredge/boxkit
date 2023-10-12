@@ -1,4 +1,4 @@
-# age
+age
 # atuin
 bat
 btop
@@ -13,6 +13,7 @@ gh
 git-absorb
 git-delta
 gping
+httpie
 jq
 just
 make
