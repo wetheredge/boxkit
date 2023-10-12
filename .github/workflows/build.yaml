@@ -41,8 +41,10 @@ jobs:
           labels: |
             io.artifacthub.package.readme-url=https://raw.githubusercontent.com/ublue-os/boxkit/main/README.md
 
-      - name: Fetch Artifacts
-        run: gh run download --repo wetheredge/helix --name bins-x86_64-linux --dir helix
+      - name: Fetch Helix Artifacts
+        run: |
+          gh run download --repo wetheredge/helix --name bins-x86_64-linux --dir helix
+          gh api repos/helix-editor/helix/contents/contrib/completion/hx.fish --jq '.content | @base64d' > helix/hx.fish
         env:
           GITHUB_TOKEN: ${{ github.token }}
 

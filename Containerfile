@@ -20,6 +20,7 @@ RUN grep -v '^#' /npm-packages | xargs npm install --global && \
 
 COPY helix/hx /usr/bin/hx
 COPY helix/runtime /usr/share/helix/runtime
+COPY helix/hx.fish /usr/share/fish/vendor_completions.d/hx.fish
 RUN chmod +x /usr/bin/hx && \
     echo 'export HELIX_RUNTIME="/usr/share/helix/runtime"' >> /etc/profile.d/helix-runtime.sh && \
     echo 'set -gx HELIX_RUNTIME /usr/share/helix/runtime' >> /usr/share/fish/vendor_conf.d/helix-runtime.fish
