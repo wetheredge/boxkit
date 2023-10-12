@@ -38,8 +38,6 @@ jobs:
         with:
           images: |
             ${{ env.IMAGE_NAME }}
-          labels: |
-            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/ublue-os/boxkit/main/README.md
 
       - name: Fetch Helix Artifacts
         run: |
