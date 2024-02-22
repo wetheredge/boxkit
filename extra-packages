@@ -22,6 +22,7 @@ mosh
 ncdu
 nodejs
 nodejs-npm
+pipx
 ripgrep
 speedtest-cli
 starship
