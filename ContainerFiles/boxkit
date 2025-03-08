@@ -8,7 +8,8 @@ LABEL com.github.containers.toolbox="true" \
 COPY ../scripts/boxkit.sh /
 COPY ../scripts/distrobox-shims.sh /
 COPY ../packages/boxkit.packages /packages
+COPY ../packages/boxkit.coprs /coprs
 
 # Run the setup scripts
 RUN chmod +x boxkit.sh distrobox-shims.sh && /boxkit.sh
-RUN rm /boxkit.sh /distrobox-shims.sh /packages
+RUN rm /boxkit.sh /distrobox-shims.sh /packages /coprs
